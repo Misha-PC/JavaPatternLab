@@ -7,6 +7,10 @@ import ru.rusinov.lab_pattern.composite.IPlayer;
 import ru.rusinov.lab_pattern.composite.Scout;
 import ru.rusinov.lab_pattern.composite.Sniper;
 import ru.rusinov.lab_pattern.composite.Team;
+import ru.rusinov.lab_pattern.decorator.IDeveloper;
+import ru.rusinov.lab_pattern.decorator.PythonJuniorDeveloper;
+import ru.rusinov.lab_pattern.decorator.PythonMiddleDeveloper;
+import ru.rusinov.lab_pattern.decorator.PythonTeamLead;
 
 public class Main    {
     public static void main(String[] args) {
@@ -21,6 +25,8 @@ public class Main    {
         showComposite();
 
         // case 4, Decorator
+        showDecorator();
+
         // case 5, Facade
         // case 6, Flyweight
         // case 7, Proxy
@@ -88,6 +94,21 @@ public class Main    {
         team.addPlayer(sniper);
 
         team.loadPlayers();
+    }
+
+    public static void  showDecorator(){
+        System.out.println("#-------- Decorator -------#");
+
+        IDeveloper junior   = new PythonJuniorDeveloper();          //питонист обычный  сложность минимильная
+        IDeveloper middle   = new PythonMiddleDeveloper(junior);    //питонист лвл2     сложность + 1
+        IDeveloper teamLead = new PythonTeamLead(middle);           //питонист макс.лвл сложность + 1 + 1
+
+
+        System.out.println( junior .writeCode());
+        System.out.println( middle .writeCode());
+        System.out.println(teamLead.writeCode());
+
+
     }
 
 }
