@@ -2,6 +2,7 @@ package ru.rusinov.lab_pattern;
 
 import ru.rusinov.lab_pattern.adapter.AdaptedConcretClass;
 import ru.rusinov.lab_pattern.adapter.FirstConcretClass;
+import ru.rusinov.lab_pattern.bridge.*;
 
 public class Main    {
     public static void main(String[] args) {
@@ -10,6 +11,7 @@ public class Main    {
         showAdapter();
 
         // case 2, Bridge
+        showBridge();
 
         // case 3, composite
         // case 4, Decorator
@@ -48,6 +50,18 @@ public class Main    {
     public static void showBridge(){
         System.out.println("#-------- Bridge -------#");
 
+        TechnicalFactory factory = new TechnicalFactory();
+
+        Technical[] pack = {
+                new Tank(new Tracks(), "T100-LT"),
+                new Tank(new Wheels(), "EBR-105"),
+
+                new Tractor(new Tracks(), "ТТ-4М"),
+                new Tractor(new Wheels(), "K744 P3"),
+        };
+
+        factory.setTechicals(pack);
+        factory.start();
 
 
     }

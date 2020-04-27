@@ -1,9 +1,9 @@
 package ru.rusinov.lab_pattern.bridge;
 
-public class Wheels implements Transmission {
+public class Wheels implements ITransmission {
 
     @Override
     public void getTransmissionType() {
-        System.out.println("");
+        System.out.println("\tTransmission: Wheels");
     }
 }
