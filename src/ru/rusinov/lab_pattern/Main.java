@@ -3,6 +3,10 @@ package ru.rusinov.lab_pattern;
 import ru.rusinov.lab_pattern.adapter.AdaptedConcretClass;
 import ru.rusinov.lab_pattern.adapter.FirstConcretClass;
 import ru.rusinov.lab_pattern.bridge.*;
+import ru.rusinov.lab_pattern.composite.IPlayer;
+import ru.rusinov.lab_pattern.composite.Scout;
+import ru.rusinov.lab_pattern.composite.Sniper;
+import ru.rusinov.lab_pattern.composite.Team;
 
 public class Main    {
     public static void main(String[] args) {
@@ -14,6 +18,8 @@ public class Main    {
         showBridge();
 
         // case 3, composite
+        showComposite();
+
         // case 4, Decorator
         // case 5, Facade
         // case 6, Flyweight
@@ -64,6 +70,24 @@ public class Main    {
         factory.start();
 
 
+    }
+
+    public static void showComposite(){
+        System.out.println("#-------- Composite -------#");
+
+        Team team = new Team();
+
+        IPlayer ivan   = new Scout();
+        IPlayer andreo = new Scout();
+        IPlayer diman  = new Sniper();
+        IPlayer sniper = new Sniper();
+
+        team.addPlayer(ivan);
+        team.addPlayer(andreo);
+        team.addPlayer(diman);
+        team.addPlayer(sniper);
+
+        team.loadPlayers();
     }
 
 }
